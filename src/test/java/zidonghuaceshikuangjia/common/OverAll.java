@@ -2,5 +2,5 @@ package zidonghuaceshikuangjia.common;
 
 public class OverAll {
 
-    public static Boolean oversuit=false;
+    public static Boolean oversuit=true;
 }
