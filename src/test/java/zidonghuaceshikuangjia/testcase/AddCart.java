@@ -1,21 +1,16 @@
 package zidonghuaceshikuangjia.testcase;
 
-import cn.afterturn.easypoi.excel.ExcelImportUtil;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import zidonghuaceshikuangjia.apicall.ApiCall;
 import zidonghuaceshikuangjia.common.Envment;
-import zidonghuaceshikuangjia.daomain.TestCaseq;
+import zidonghuaceshikuangjia.daomain.TestCaseDemo;
 import zidonghuaceshikuangjia.service.Login_Search_Choice;
 import zidonghuaceshikuangjia.util.AssertUtil;
 import zidonghuaceshikuangjia.util.ExcelUtil;
 import zidonghuaceshikuangjia.util.JDBCUtils;
-
-import java.util.Map;
 
 public class AddCart extends AssertUtil {
     @Test
@@ -34,7 +29,7 @@ public class AddCart extends AssertUtil {
         //Assert.assertEquals( JDBCUtils.getMapResult(sql).get("basket_count"),1);
     }
     @Test(dataProvider ="addcart")
-    public void addCart(TestCaseq testCaseq) {
+    public void addCart(TestCaseDemo testCaseq) {
         //准备参数
         String para = "{\"principal\":\"liyanyan\",\"credentials\":\"123456\",\"appType\":3,\"loginType\":0}";
         //登录

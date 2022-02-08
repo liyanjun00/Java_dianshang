@@ -2,7 +2,7 @@ package zidonghuaceshikuangjia.daomain;
 
 import cn.afterturn.easypoi.excel.annotation.Excel;
 
-public class TestCaseq {
+public class TestCaseDemo {
     @Excel(name = "序号(caseId)")
     private int caseId;
     @Excel(name = "接口模块(interface)")
