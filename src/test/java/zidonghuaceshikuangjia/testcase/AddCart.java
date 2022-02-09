@@ -41,6 +41,7 @@ public class AddCart extends AssertUtil {
         AssertUtil.assertMthod(testCaseq.getExpected(),resule);
         //数据库断言
         AssertUtil.assertMthodDB(testCaseq.getAssertdb());
+        ApiCall.deletecart("[]");
     }
     @DataProvider
     public Object[] addcart(){

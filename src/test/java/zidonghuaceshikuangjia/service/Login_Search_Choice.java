@@ -6,7 +6,8 @@ import zidonghuaceshikuangjia.common.Envment;
 
 public class Login_Search_Choice {
 
-    public static Response login_search_addcart(String para) {
+    public static Response
+    login_search_addcart(String para) {
         //登录
         Response res = ApiCall.login(para);
         Envment.addEnv("token", (String) res.jsonPath().get("access_token"));

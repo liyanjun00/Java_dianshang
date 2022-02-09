@@ -108,42 +108,65 @@ public class ApiCall {
 
     /**
      * 确认商品
+     *
      * @param input
      * @return
      */
-    public static Response confirmProduct (String input){
-        String newinput=ReplaceparamUtil.paramReplace(input);
-        String url ="http://mall.lemonban.com:8107/p/order/confirm";
+    public static Response confirmProduct(String input) {
+        String newinput = ReplaceparamUtil.paramReplace(input);
+        String url = "http://mall.lemonban.com:8107/p/order/confirm";
         Map headers = new HashMap();
         headers.put("Content-Type", "application/json");
         headers.put("Authorization", "bearer" + Envment.getEnv("token"));
         /*String input="{\"addrId\":0,\"orderItem\":{\"prodId\":83,\"skuId\":415,\"prodCount\":1," +
                 "\"shopId\":1},\"couponIds\":[],\"isScorePay\":0,\"userChangeCoupon\":0," +
                 "\"userUseScore\":0,\"uuid\":\"06490a36-edd8-4b76-8dcf-6094c7cbf17e\"}"*/
-      return  SendRespondUtil.sendRespond("确认商品","post",url,headers,newinput);
+        return SendRespondUtil.sendRespond("确认商品", "post", url, headers, newinput);
     }
-    public static Response submitProduct(String input){
-        String newinput=ReplaceparamUtil.paramReplace(input);
-        String url ="http://mall.lemonban.com:8107/p/order/submit";
+
+    public static Response submitProduct(String input) {
+        String newinput = ReplaceparamUtil.paramReplace(input);
+        String url = "http://mall.lemonban.com:8107/p/order/submit";
         Map headers = new HashMap();
         headers.put("Content-Type", "application/json");
         headers.put("Authorization", "bearer" + Envment.getEnv("token"));
         /*String input={"orderShopParam":[{"remarks":"","shopId":1}],"uuid":"06490a36-edd8-4b76-8dcf-6094c7cbf17e"}"*/
-        return  SendRespondUtil.sendRespond("提交订单","post",url,headers,newinput);
+        return SendRespondUtil.sendRespond("提交订单", "post", url, headers, newinput);
     }
-    public static Response payProduct(String input){
-        String newinput=ReplaceparamUtil.paramReplace(input);
-        String url ="http://mall.lemonban.com:8107/p/order/pay";
+
+    public static Response payProduct(String input) {
+        String newinput = ReplaceparamUtil.paramReplace(input);
+        String url = "http://mall.lemonban.com:8107/p/order/pay";
         Map headers = new HashMap();
         headers.put("Content-Type", "application/json");
         headers.put("Authorization", "bearer" + Envment.getEnv("token"));
         /*String input={"payType":3,"orderNumbers":"1481439611900399616"}"*/
-        return  SendRespondUtil.sendRespond("付款","post",url,headers,newinput);
+        return SendRespondUtil.sendRespond("付款", "post", url, headers, newinput);
     }
-    public static Response mockPay(String inputParams){
+
+    public static Response mockPay(String inputParams) {
         Map<String, Object> headMap = new HashMap<>();
-        headMap.put("Content-Type","application/json");
+        headMap.put("Content-Type", "application/json");
         headMap.put("Authorization", "bearer" + Envment.getEnv("token"));
-        return SendRespondUtil.sendRespond("模拟回调接口","POST","http://mall.lemonban.com:8107/notice/pay/3",headMap,inputParams);
+        return SendRespondUtil.sendRespond("模拟回调接口", "POST", "http://mall.lemonban.com:8107/notice/pay/3", headMap, inputParams);
+    }
+
+    /**
+     * 删除购物车
+     */
+    public static Response deletecart(String inputpara) {
+        String url = "http://mall.lemonban.com:8107/p/shopCart/info";
+        Map header = new HashMap<>();
+        header.put("Content-Type", "application/json");
+        header.put("Authorization", "bearer" + Envment.getEnv("token"));
+        Response re = SendRespondUtil.sendRespond("查询购物车ID", "post", url, header, inputpara);
+        Integer baskid=re.jsonPath().get("[0].shopCartItemDiscounts[0].shopCartItems[0].basketId");
+        System.out.println(baskid);
+        String url1="http://mall.lemonban.com:8107/p/shopCart/deleteItem";
+        Map header1 = new HashMap<>();
+        header1.put("Content-Type", "application/json");
+        header1.put("Authorization", "bearer" + Envment.getEnv("token"));
+         return SendRespondUtil.sendRespond("删除购物车","post",url1,header1,"["+baskid.toString()+"]");
+
     }
 }
