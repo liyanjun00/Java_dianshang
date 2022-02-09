@@ -73,7 +73,7 @@ public class ApiCall {
     public static Response search() {
         String url = "http://mall.lemonban.com:8107/search/searchProdPage";
         Map headers = new HashMap();
-        String inputpara = "0";
+        String inputpara = "prodName=&categoryId=&sort=0&orderBy=0&current=1&isAllProdType=true&st=0&size=200";
         return SendRespondUtil.sendRespond("搜索商品", "get", url, headers, inputpara);
     }
 

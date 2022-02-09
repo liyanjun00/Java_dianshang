@@ -20,13 +20,14 @@ public class AddCart extends AssertUtil {
         //登录搜选择商品
         Response choiceresult = Login_Search_Choice.login_search_addcart(para);
         //添加购物车
-        String str = "{\"basketId\":0,\"count\":1,\"prodId\":\"#prodId#\",\"shopId\":1,\"skuId\":415}";
+        String str = "{\"basketId\":0,\"count\":1,\"prodId\":\"#prodId#\",\"shopId\":1,\"skuId\":466}";
         Response resule = ApiCall.add_Shoping_Car(str);
         //断言状态码
         Assert.assertEquals(resule.getStatusCode(), 200);
         String sql="select * from tz_basket where user_id=(select user_id  from tz_user where user_name='liyanyan')";
         JDBCUtils.getMapResult(sql);
         //Assert.assertEquals( JDBCUtils.getMapResult(sql).get("basket_count"),1);
+        ApiCall.deletecart("[]");
     }
     @Test(dataProvider ="addcart")
     public void addCart(TestCaseDemo testCaseq) {

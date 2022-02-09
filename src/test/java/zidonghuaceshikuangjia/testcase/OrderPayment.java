@@ -13,7 +13,7 @@ public class OrderPayment {
     public void orderpay(){
         String input1="{\"principal\":\"liyanyan\",\"credentials\":\"123456\",\"appType\":3,\"loginType\":0}";
         Login_Search_Choice.login_search_addcart(input1);
-        String input2="{\"addrId\":0,\"orderItem\":{\"prodId\":#prodId#,\"skuId\":415,\"prodCount\":1," +
+        String input2="{\"addrId\":0,\"orderItem\":{\"prodId\":#prodId#,\"skuId\":466,\"prodCount\":1," +
                 "\"shopId\":1},\"couponIds\":[],\"isScorePay\":0,\"userChangeCoupon\":0," +
                 "\"userUseScore\":0,\"uuid\":\"06490a36-edd8-4b76-8dcf-6094c7cbf17e\"}";
         ApiCall.confirmProduct(input2);
