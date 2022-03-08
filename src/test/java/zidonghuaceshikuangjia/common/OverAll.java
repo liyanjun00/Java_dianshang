@@ -1,6 +1,6 @@
 package zidonghuaceshikuangjia.common;
 
-public class OverAll {
+public abstract class  OverAll {
 
     public static Boolean oversuit=false;
 }
